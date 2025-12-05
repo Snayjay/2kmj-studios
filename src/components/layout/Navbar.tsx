@@ -17,10 +17,10 @@ export function Navbar() {
   ];
 
   return (
-    <nav className="fixed top-0 w-full z-50 border-b border-white/10 bg-background/80 backdrop-blur-md supports-[backdrop-filter]:bg-background/60">
+    <nav className="fixed top-0 w-full z-50 border-b border-secondary/20 bg-background/80 backdrop-blur-md supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-        <Link href="/" className="text-xl font-bold tracking-tighter hover:opacity-80 transition-opacity">
-          2KMJ <span className="text-accent">Studios</span>
+        <Link href="/" className="text-xl font-serif font-bold tracking-tighter hover:opacity-80 transition-opacity">
+          2KMJ-<span className="text-accent">Studios</span>
         </Link>
 
         {/* Desktop Menu */}
@@ -29,14 +29,14 @@ export function Navbar() {
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm font-medium text-muted-foreground hover:text-accent transition-colors"
+              className="text-sm font-medium text-secondary hover:text-accent transition-colors"
             >
               {link.label}
             </Link>
           ))}
           <Link
             href="#contact"
-            className="px-4 py-2 rounded-full bg-foreground text-background text-sm font-medium hover:opacity-90 transition-opacity"
+            className="px-4 py-2 rounded-full bg-accent text-background text-sm font-medium hover:bg-accent/90 transition-opacity"
           >
             Start a Project
           </Link>
@@ -58,7 +58,7 @@ export function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden border-b border-white/10 bg-background"
+            className="md:hidden border-b border-secondary/20 bg-background"
           >
             <div className="container mx-auto px-4 py-4 flex flex-col gap-4">
               {navLinks.map((link) => (
@@ -73,7 +73,7 @@ export function Navbar() {
               ))}
               <Link
                 href="#contact"
-                className="w-full text-center px-4 py-2 rounded-full bg-foreground text-background text-sm font-medium hover:opacity-90 transition-opacity"
+                className="w-full text-center px-4 py-2 rounded-full bg-accent text-background text-sm font-medium hover:bg-accent/90 transition-opacity"
                 onClick={() => setIsOpen(false)}
               >
                 Start a Project

@@ -1,11 +1,12 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f8fafc;
-  --foreground: #1e293b;
-  --primary: #334155;
-  --secondary: #64748b;
-  --accent: #0ea5e9;
+  --background: #1c1917;
+  --foreground: #e7e5e4;
+  --primary: #292524;
+  --secondary: #57534e;
+  --accent: #d97706;
+  --surface: #292524;
 }
 
 @theme inline {
@@ -14,18 +15,10 @@
   --color-primary: var(--primary);
   --color-secondary: var(--secondary);
   --color-accent: var(--accent);
+  --color-surface: var(--surface);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0f172a;
-    --foreground: #e2e8f0;
-    --primary: #94a3b8;
-    --secondary: #64748b;
-    --accent: #38bdf8;
-  }
+  --font-serif: var(--font-lora);
 }
 
 body {
@@ -37,6 +30,10 @@ body {
 
 @layer utilities {
   .glass-panel {
-    @apply bg-white/5 backdrop-blur-md border border-white/10 shadow-xl;
+    @apply bg-surface/30 backdrop-blur-md border border-secondary/20 shadow-xl;
+  }
+  
+  .font-serif {
+    font-family: var(--font-serif), Georgia, serif;
   }
 }

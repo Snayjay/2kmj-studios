@@ -1,8 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Code, Database, Brain, CreditCard, Monitor, Globe, CheckCircle2 } from "lucide-react";
+import { ArrowRight, Code, Database, Brain, CreditCard, Monitor, Globe, CheckCircle2, Send, CheckCircle } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
+import { useState } from "react";
 
 const fadeIn = {
   initial: { opacity: 0, y: 20 },
@@ -15,45 +17,59 @@ export default function Home() {
   return (
     <div className="flex flex-col gap-24 pb-24">
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/50 to-background z-10" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-accent/20 rounded-full blur-[120px] opacity-30 animate-pulse" />
-        </div>
-        
-        <div className="container relative z-10 px-4 text-center">
+      <section className="relative min-h-[90vh] flex items-center overflow-hidden">
+        <div className="container mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
+          {/* Left: Text Content */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
+            className="space-y-8"
           >
-            <span className="inline-block px-4 py-1.5 mb-6 rounded-full border border-white/10 bg-white/5 text-sm font-medium text-accent">
-              Vibe Coding & Full-Stack Development
+            <span className="inline-block px-4 py-1.5 rounded-full border border-accent/20 bg-accent/10 text-sm font-medium text-accent">
+              Full-Stack Development
             </span>
-            <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-8 bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/60">
-              Relaxing Tech.
+            <h1 className="text-5xl md:text-7xl font-serif font-bold tracking-tight leading-tight">
+              Custom Tech.
               <br />
-              Advanced Functionality.
+              <span className="text-accent">Advanced Functionality.</span>
             </h1>
-            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed">
+            <p className="text-lg md:text-xl text-secondary max-w-xl leading-relaxed">
               Crafting interactive websites and specialized automation tools for small to medium businesses. 
               Functionality over form, with just enough bling.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4">
               <Link
                 href="#contact"
-                className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-foreground text-background font-medium text-lg hover:opacity-90 transition-all hover:scale-105"
+                className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-accent text-background font-medium text-lg hover:bg-accent/90 transition-all hover:scale-105"
               >
                 Start Your MVP
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Link>
               <Link
                 href="#services"
-                className="inline-flex items-center justify-center px-8 py-4 rounded-full border border-white/10 bg-white/5 font-medium text-lg hover:bg-white/10 transition-all"
+                className="inline-flex items-center justify-center px-8 py-4 rounded-full border border-secondary/30 bg-surface/50 font-medium text-lg hover:bg-surface transition-all"
               >
                 Explore Services
               </Link>
             </div>
+          </motion.div>
+
+          {/* Right: Image */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+            className="relative h-[600px] rounded-3xl overflow-hidden shadow-2xl"
+          >
+            <Image
+              src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1000&auto=format&fit=crop"
+              alt="Cozy home office workspace"
+              fill
+              className="object-cover"
+              priority
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
           </motion.div>
         </div>
       </section>
@@ -61,8 +77,8 @@ export default function Home() {
       {/* Services Section */}
       <section id="services" className="container px-4 mx-auto">
         <motion.div {...fadeIn} className="mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Core Services</h2>
-          <p className="text-muted-foreground max-w-2xl">
+          <h2 className="text-3xl md:text-4xl font-serif font-bold mb-4">Core Services</h2>
+          <p className="text-secondary max-w-2xl">
             Beyond static pages. We build dynamic, data-driven applications that integrate seamlessly with your business workflows.
           </p>
         </motion.div>
@@ -103,16 +119,16 @@ export default function Home() {
 
       {/* Products Section (Placeholder) */}
       <section id="products" className="container px-4 mx-auto">
-        <motion.div {...fadeIn} className="p-12 rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent text-center">
-          <h2 className="text-3xl font-bold mb-4">Product Showcase</h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto mb-8">
+        <motion.div {...fadeIn} className="p-12 rounded-3xl border border-secondary/20 bg-surface/30 text-center">
+          <h2 className="text-3xl font-serif font-bold mb-4">Product Showcase</h2>
+          <p className="text-secondary max-w-2xl mx-auto mb-8">
             A collection of standard websites, advanced applications, and niche tools will be showcased here.
             Stay tuned for our product launch.
           </p>
           <div className="grid md:grid-cols-2 gap-4 max-w-4xl mx-auto opacity-50 pointer-events-none blur-[2px]">
             {/* Placeholders for visual effect */}
-            <div className="aspect-video bg-white/5 rounded-xl border border-white/10" />
-            <div className="aspect-video bg-white/5 rounded-xl border border-white/10" />
+            <div className="aspect-video bg-surface/50 rounded-xl border border-secondary/20" />
+            <div className="aspect-video bg-surface/50 rounded-xl border border-secondary/20" />
           </div>
         </motion.div>
       </section>
@@ -120,8 +136,8 @@ export default function Home() {
       {/* Pricing / Business Model */}
       <section id="pricing" className="container px-4 mx-auto">
         <motion.div {...fadeIn} className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Flexible Engagement</h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-serif font-bold mb-4">Flexible Engagement</h2>
+          <p className="text-secondary max-w-2xl mx-auto">
             Whether you need a one-off project or a long-term partner, we have a model that fits.
           </p>
         </motion.div>
@@ -158,20 +174,16 @@ export default function Home() {
       <section id="contact" className="container px-4 mx-auto mb-12">
         <motion.div 
           {...fadeIn}
-          className="rounded-3xl bg-foreground text-background p-12 text-center"
+          className="rounded-3xl bg-accent/10 border border-accent/20 p-8 md:p-12"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Vibe Code?</h2>
-          <p className="text-lg opacity-80 max-w-2xl mx-auto mb-10">
-            Let's discuss your project. Whether it's a simple website or a complex automation tool,
-            we're ready to bring it to life.
-          </p>
-          <a
-            href="mailto:hello@2kmj.com"
-            className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-background text-foreground font-medium text-lg hover:opacity-90 transition-all"
-          >
-            Get in Touch
-            <ArrowRight className="ml-2 w-5 h-5" />
-          </a>
+          <div className="text-center mb-8">
+            <h2 className="text-3xl md:text-4xl font-serif font-bold mb-4">Design your future with us!</h2>
+            <p className="text-lg text-secondary max-w-2xl mx-auto">
+              Let's discuss your project. Whether it's a simple website or a complex automation tool,
+              we're ready to bring it to life.
+            </p>
+          </div>
+          <ContactForm />
         </motion.div>
       </section>
     </div>
@@ -182,13 +194,13 @@ function ServiceCard({ icon, title, description }: { icon: React.ReactNode, titl
   return (
     <motion.div 
       {...fadeIn}
-      className="p-6 rounded-2xl border border-white/10 bg-white/5 hover:bg-white/10 transition-colors"
+      className="p-6 rounded-2xl border border-secondary/20 bg-surface/30 hover:bg-surface/50 transition-colors"
     >
-      <div className="mb-4 p-3 bg-white/5 rounded-xl inline-block">
+      <div className="mb-4 p-3 bg-accent/10 rounded-xl inline-block">
         {icon}
       </div>
-      <h3 className="text-xl font-bold mb-2">{title}</h3>
-      <p className="text-muted-foreground text-sm leading-relaxed">
+      <h3 className="text-xl font-serif font-bold mb-2">{title}</h3>
+      <p className="text-secondary text-sm leading-relaxed">
         {description}
       </p>
     </motion.div>
@@ -199,24 +211,150 @@ function PricingCard({ title, price, description, features, highlight = false }:
   return (
     <motion.div 
       {...fadeIn}
-      className={`p-8 rounded-3xl border ${highlight ? 'border-accent bg-accent/5' : 'border-white/10 bg-white/5'} relative overflow-hidden`}
+      className={`p-8 rounded-3xl border ${highlight ? 'border-accent bg-accent/10' : 'border-secondary/20 bg-surface/30'} relative overflow-hidden`}
     >
       {highlight && (
         <div className="absolute top-0 right-0 p-4">
-          <span className="bg-accent text-white text-xs font-bold px-3 py-1 rounded-full">RECOMMENDED</span>
+          <span className="bg-accent text-background text-xs font-bold px-3 py-1 rounded-full">RECOMMENDED</span>
         </div>
       )}
-      <h3 className="text-2xl font-bold mb-2">{title}</h3>
-      <div className="text-3xl font-bold text-accent mb-4">{price}</div>
-      <p className="text-muted-foreground mb-8">{description}</p>
+      <h3 className="text-2xl font-serif font-bold mb-2">{title}</h3>
+      <div className="text-3xl font-serif font-bold text-accent mb-4">{price}</div>
+      <p className="text-secondary mb-8">{description}</p>
       <ul className="space-y-4">
         {features.map((feature, i) => (
           <li key={i} className="flex items-center gap-3">
             <CheckCircle2 className="w-5 h-5 text-accent shrink-0" />
-            <span className="text-sm">{feature}</span>
+            <span className="text-sm text-secondary">{feature}</span>
           </li>
         ))}
       </ul>
     </motion.div>
+  );
+}
+
+function ContactForm() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus("idle");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "Failed to send message");
+      }
+
+      setSubmitStatus("success");
+      setFormData({ name: "", email: "", message: "" });
+      setTimeout(() => setSubmitStatus("idle"), 5000);
+    } catch (error) {
+      console.error("Form submission error:", error);
+      setSubmitStatus("error");
+      setTimeout(() => setSubmitStatus("idle"), 5000);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="max-w-2xl mx-auto space-y-6">
+      <div className="grid md:grid-cols-2 gap-6">
+        <div>
+          <label htmlFor="name" className="block text-sm font-medium text-secondary mb-2">
+            Name
+          </label>
+          <input
+            type="text"
+            id="name"
+            required
+            value={formData.name}
+            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+            className="w-full px-4 py-3 rounded-xl bg-surface/50 border border-secondary/20 text-foreground placeholder:text-secondary/50 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent transition-all"
+            placeholder="Your name"
+          />
+        </div>
+        <div>
+          <label htmlFor="email" className="block text-sm font-medium text-secondary mb-2">
+            Email
+          </label>
+          <input
+            type="email"
+            id="email"
+            required
+            value={formData.email}
+            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+            className="w-full px-4 py-3 rounded-xl bg-surface/50 border border-secondary/20 text-foreground placeholder:text-secondary/50 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent transition-all"
+            placeholder="your@email.com"
+          />
+        </div>
+      </div>
+      <div>
+        <label htmlFor="message" className="block text-sm font-medium text-secondary mb-2">
+          Project Details
+        </label>
+        <textarea
+          id="message"
+          required
+          rows={5}
+          value={formData.message}
+          onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+          className="w-full px-4 py-3 rounded-xl bg-surface/50 border border-secondary/20 text-foreground placeholder:text-secondary/50 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent transition-all resize-none"
+          placeholder="Tell us about your project..."
+        />
+      </div>
+      <div className="flex items-center justify-between">
+        {submitStatus === "success" && (
+          <motion.div
+            initial={{ opacity: 0, x: -10 }}
+            animate={{ opacity: 1, x: 0 }}
+            className="flex items-center gap-2 text-accent text-sm"
+          >
+            <CheckCircle className="w-5 h-5" />
+            <span>Message sent! We'll get back to you soon.</span>
+          </motion.div>
+        )}
+        {submitStatus === "error" && (
+          <motion.div
+            initial={{ opacity: 0, x: -10 }}
+            animate={{ opacity: 1, x: 0 }}
+            className="text-red-400 text-sm"
+          >
+            Something went wrong. Please try again or email us directly.
+          </motion.div>
+        )}
+        <button
+          type="submit"
+          disabled={isSubmitting}
+          className="ml-auto inline-flex items-center justify-center px-8 py-3 rounded-full bg-accent text-background font-medium text-lg hover:bg-accent/90 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+        >
+          {isSubmitting ? (
+            "Sending..."
+          ) : (
+            <>
+              Send Message
+              <Send className="ml-2 w-5 h-5" />
+            </>
+          )}
+        </button>
+      </div>
+    </form>
   );
 }
