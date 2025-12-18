@@ -26,13 +26,16 @@ export default function Home() {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="space-y-8"
           >
-            <span className="inline-block px-4 py-1.5 rounded-full border border-accent/20 bg-accent/10 text-sm font-medium text-accent">
-              Full-Stack Development
+            <span className="inline-block text-sm font-medium">
+              <span className="px-4 py-1.5 rounded-full bg-accent/20 text-accent">Vibe Coding</span>
+              <span className="text-secondary ml-2">& Full-Stack Development</span>
             </span>
             <h1 className="text-5xl md:text-7xl font-serif font-bold tracking-tight leading-tight">
-              Custom Tech.
+              <span className="bg-accent/20 px-2 rounded">Relaxing</span> Tech.
               <br />
-              <span className="text-accent">Advanced Functionality.</span>
+              <span className="text-accent">Advanced</span>
+              <br />
+              <span className="text-accent">Functionality.</span>
             </h1>
             <p className="text-lg md:text-xl text-secondary max-w-xl leading-relaxed">
               Crafting interactive websites and specialized automation tools for small to medium businesses. 
