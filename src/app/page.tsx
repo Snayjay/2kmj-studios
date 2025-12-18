@@ -251,19 +251,23 @@ function ContactForm() {
     setSubmitStatus("idle");
 
     try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.error || "Failed to send message");
-      }
+      // For static sites, use mailto link or a service like Formspree
+      // Option 1: Use mailto (opens email client)
+      const subject = encodeURIComponent(`New Contact Form: ${formData.name}`);
+      const body = encodeURIComponent(
+        `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+      );
+      window.location.href = `mailto:hello@2kmj.com?subject=${subject}&body=${body}`;
+      
+      // Option 2: If you want to use Formspree or similar service, uncomment below:
+      // const response = await fetch("https://formspree.io/f/YOUR_FORM_ID", {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      //   body: JSON.stringify(formData),
+      // });
+      // if (!response.ok) throw new Error("Failed to send message");
 
       setSubmitStatus("success");
       setFormData({ name: "", email: "", message: "" });

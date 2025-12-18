@@ -1,7 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  output: 'export',
   images: {
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: 'https',
@@ -9,6 +11,9 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  // If your GitHub Pages URL is https://username.github.io/repo-name, uncomment and set:
+  // basePath: '/repo-name',
+  // trailingSlash: true,
 };
 
 export default nextConfig;
